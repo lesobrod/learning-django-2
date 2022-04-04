@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as staticUrl %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css"
+          href="{{ staticUrl }}app_goods/css/global-style.css">
+    <title>Profile</title>
+</head>
+<body>
+<h2>Профиль:</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" name="Update">
+</form>
+<p>
+    <a href="{% url 'main' %}">На глагне</a>
+</p>
+</body>
+</html>

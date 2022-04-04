@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as staticUrl %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css"
+          href="{{ staticUrl }}app_goods/css/global-style.css">
+    <title></title>
+</head>
+<body>
+<h2>Маркетплейс</h2>
+{% if request.user.is_authenticated %}
+    <h3>Добро пожаловать, {{ request.user.first_name }} ! </h3>
+    <h3><a href="{% url 'logout' %}"> Выйти </a></h3>
+    <h3><a href="{% url 'profile' request.user.id %}"> Профиль </a></h3>
+    <h3><a href="{% url 'list-cartitem' %}"> Корзина </a></h3>
+    <h3><a href="{% url 'top-balance' %}"> Пополнить баланс </a></h3>
+{% else %}
+    <h3 style="display: inline;">Вы не авторизованы! </h3>
+    <a style="display: inline;" href="{% url 'login' %}">Войти </a>
+    <a href="{% url 'register' %}">Регистрация</a>
+{% endif %}
+<h3><a href="{% url 'product-list' %}">К списку товаров</a></h3>
+<h3><a href="{% url 'top-items' %}">Топ 3 товаров</a></h3>
+</body>
+</html>

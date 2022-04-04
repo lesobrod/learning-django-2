@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as staticUrl %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css"
+          href="{{ staticUrl }}app_goods/css/global-style.css">
+    <title></title>
+</head>
+<body>
+<h2>Топ 3 товаров</h2>
+<table>
+    <tr>
+        <td style="text-align:center">
+            <b>Товар</b>
+        </td>
+        <td style="text-align:center">
+            <b>Магазин</b>
+        </td>
+        <td style="text-align:center">
+            <b>Цена</b>
+        </td>
+        <td style="text-align:center">
+            <b>Описание</b>
+        </td>
+    </tr>
+    {% for product in top_items %}
+        <tr>
+            <td>
+                {{ product.title }}
+            </td>
+            <td>
+                {{ product.market }}
+            </td>
+            <td>
+                {{ product.price }}
+            </td>
+            <td style="font-size: 9pt">
+                {{ product.description }}
+            </td>
+        </tr>
+    {% empty %}
+        <p>Сегодня товаров нет</p>
+    {% endfor %}
+</table>
+<h4><a href="{% url 'main' %}">На глагне</a></h4>
+</body>
+</html>

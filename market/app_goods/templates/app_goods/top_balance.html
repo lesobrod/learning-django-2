@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as staticUrl %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css"
+          href="{{ staticUrl }}app_goods/css/global-style.css">
+    <title>Balance</title>
+</head>
+<body>
+<h2>Пополнить баланс</h2>
+<form method="POST">
+    {% csrf_token %}
+    <p>Ваш баланс: {{ profile.balance }}</p>
+    <p>Пополнить на <input type="number" value="20"} name="add" min="0" max="100"></p>
+    <input type="submit" name="top-balance">
+</form>
+<p>
+    <a href="{% url 'main' %}">На глагне</a>
+</p>
+</body>
+</html>
